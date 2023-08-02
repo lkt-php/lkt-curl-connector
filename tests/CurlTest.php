@@ -1,9 +1,8 @@
 <?php
 
-namespace Lkt\CurlConnectors\Tests;
+namespace Lkt\Connectors\Tests;
 
-use Lkt\CurlConnectors\CurlConnections;
-use Lkt\CurlConnectors\CurlConnector;
+use Lkt\Connectors\CurlConnector;
 use PHPUnit\Framework\TestCase;
 
 class CurlTest extends TestCase
@@ -14,8 +13,6 @@ class CurlTest extends TestCase
             ->setHost('localhost')
             ->setUser('')
             ->setPassword('');
-
-        CurlConnections::set($conn);
 
         $r = $conn->query('/test', [
             'prop' => 'lorem',

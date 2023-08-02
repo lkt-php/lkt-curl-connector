@@ -1,9 +1,34 @@
 <?php
 
-namespace Lkt\CurlConnectors;
+namespace Lkt\Connectors;
 
 class CurlConnector extends AbstractCrudConnector
 {
+    /** @var CurlConnector[] */
+    protected static array $connectors = [];
+
+    public static function define(string $name): static
+    {
+        $r = new static($name);
+        static::$connectors[$name] = $r;
+        return $r;
+    }
+
+    public static function get(string $name): CurlConnector
+    {
+        if (!isset(static::$connectors[$name])) {
+            throw new \Exception("Connector '{$name}' doesn't exists");
+        }
+        return static::$connectors[$name];
+    }
+
+    /**
+     * @return CurlConnector[]
+     */
+    public static function getAllConnectors(): array
+    {
+        return static::$connectors;
+    }
     private const userAgent = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.0.3705; .NET CLR 1.1.4322)';
 
     public function query(string $url = '', array $args = [], string $method = 'GET')
@@ -51,10 +76,5 @@ class CurlConnector extends AbstractCrudConnector
         curl_close($ch);
 
         return $result;
-    }
-
-    public function get(string $url = '', array $args = [])
-    {
-        return $this->query($url, $args, 'GET');
     }
 }

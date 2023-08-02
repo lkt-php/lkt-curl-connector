@@ -2,7 +2,7 @@
   "name": "lkt/curl-connector",
   "description": "LKT cURL connector",
   "type": "library",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "require": {
     "php": ">=8.1.0",
     "ext-curl": "*"
@@ -14,8 +14,8 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Lkt\\CurlConnectors\\": "src",
-      "Lkt\\CurlConnectors\\Tests\\": "tests"
+      "Lkt\\Connectors\\": "src",
+      "Lkt\\Connectors\\Tests\\": "tests"
     }
   }
 }

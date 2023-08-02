@@ -1,6 +1,6 @@
 <?php
 
-namespace Lkt\CurlConnectors;
+namespace Lkt\Connectors;
 
 abstract class AbstractCrudConnector
 {
